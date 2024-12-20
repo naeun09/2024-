@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자취 꿀팁</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .search-bar {
+            margin: 10px 0;
+        }
+
+        .menu {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .menu button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .more-btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="site-title">자취 꿀팁</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="검색어를 입력하세요">
+                <button>🔍</button>
+            </div>
+            <nav class="menu">
+                <a href="board.html" class="info-share-btn">정보 공유</a>
+                <a href="post_board.html" class="write-btn">글</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="popular-info">
+            <h2>최신 정보</h2>
+            <div class="info-cards"></div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const infos = JSON.parse(localStorage.getItem('infos')) || [];
+                    const latestInfos = infos.slice(-3).reverse(); 
+                    const infoCards = document.querySelector('.info-cards');
+        
+                    latestInfos.forEach((info) => {
+                        const card = document.createElement('div');
+                        card.classList.add('card');
+                        card.innerHTML = `
+                            ${info.image ? `<img src="${info.image}" alt="정보 이미지" style="width:100%; height:auto; margin-bottom:10px;">` : ''}
+                            <p>${info.title}</p>
+                        `;
+                        infoCards.appendChild(card);
+                    });
+                    if (infos.length === 0) {
+                        infoCards.innerHTML = '<p>현재 추가된 정보가 없습니다.</p>';
+                    }
+                });
+            </script>
+            <a href="board.html" class="more-btn">더보기 →</a>
+        </section>
+
+        <section class="popular-posts">
+            <h2>최신 글</h2>
+            <ul class="posts-list"></ul>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                    const latestPosts = posts.slice(-3).reverse();
+                    const postsList = document.querySelector('.posts-list');
+        
+                    latestPosts.forEach((post) => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <p>${post.title}</p>
+                        `;
+                        postsList.appendChild(listItem); 
+                    });
+                    if (posts.length === 0) {
+                        postsList.innerHTML = '<p>현재 추가된 글이 없습니다.</p>';
+                    }
+                });
+            </script>
+            <a href="post_board.html" class="more-btn">더보기 →</a>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 자취 꿀팁 커뮤니티</p>
+    </footer>
+</body>
+</html>

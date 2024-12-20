@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 상세보기 - 자취 꿀팁</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .post-content {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .comments-section {
+            margin-top: 30px;
+        }
+
+        .comments-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .comment {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .comment-form input, .comment-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .comment-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="post-title">글 제목</h1>
+        <p class="post-content">글 내용</p>
+
+        <div class="comments-section">
+            <h3>댓글</h3>
+            <div class="comments-list">
+                
+            </div>
+            <div class="comment-form">
+                <input type="text" id="commenter" placeholder="이름" required>
+                <textarea id="comment" placeholder="댓글을 입력하세요" required></textarea>
+                <button id="addComment">댓글 작성</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="post_detail.js"></script>
+</body>
+</html>
